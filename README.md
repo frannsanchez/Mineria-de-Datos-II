@@ -17,20 +17,20 @@ Disponibilizar datos para consultas en tiempo real
 
 ## Arquitectura del Pipeline
 
-### 🔹 Flujo Multi-hop (Medallion Architecture)
+### Flujo Multi-hop (Medallion Architecture)
 
-**Landing**\
+**Landing**
 - Datos crudos (CSV maestros, JSONL de eventos streaming)
 
-**Bronze (Raw)**\
+**Bronze (Raw)**
 - Batch: Ingesta de maestros con deduplicación\
 - Streaming: Ingesta de usage_events con Structured Streaming
 
-**Silver (Enriched & Validated)**\
+**Silver (Enriched & Validated)**
 - Limpieza, normalización y reglas de calidad\
 - Separación en valid y quarantine
 
-**Gold (Aggregated)**\
+**Gold (Aggregated)**
 - Data Mart FinOps\
 - Agregaciones por org, fecha y servicio
 
