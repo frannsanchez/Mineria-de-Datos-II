@@ -1,6 +1,6 @@
 # Cloud Provider Analytics
 
-**Integrantes:**\
+**Integrantes:**
 - Franco Sanchez
 - Rodrigo Cirera
 - Juan Baliota
@@ -23,21 +23,21 @@ Disponibilizar datos para consultas en tiempo real
 - Datos crudos (CSV maestros, JSONL de eventos streaming)
 
 **Bronze (Raw)**
-- Batch: Ingesta de maestros con deduplicación\
+- Batch: Ingesta de maestros con deduplicación
 - Streaming: Ingesta de usage_events con Structured Streaming
 
 **Silver (Enriched & Validated)**
-- Limpieza, normalización y reglas de calidad\
+- Limpieza, normalización y reglas de calidad
 - Separación en valid y quarantine
 
 **Gold (Aggregated)**
-- Data Mart FinOps\
+- Data Mart FinOps
 - Agregaciones por org, fecha y servicio
 
-**Serving**\
+**Serving**
 - Carga incremental a AstraDB
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ``` bash
 /content/
@@ -56,29 +56,29 @@ Disponibilizar datos para consultas en tiempo real
 └── usage_events_stream/
 ```
 
-## 🔧 Prerrequisitos
+## Prerrequisitos
 
--   Google Colab o Spark local\
--   Python 3.10+\
--   pyspark, cassandra-driver, astrapy\
+-   Google Colab o Spark local
+-   Python 3.10+
+-   pyspark, cassandra-driver, astrapy
 -   Cuenta en AstraDB
 
-## 🚀 Quickstart
+## Quickstart
 
-1.  Configuración inicial\
-2.  Ingesta Batch (Bronze)\
-3.  Ingesta Streaming\
-4.  Procesamiento Silver\
+1.  Configuración inicial
+2.  Ingesta Batch (Bronze)
+3.  Ingesta Streaming
+4.  Procesamiento Silver
 5.  Generación Gold\
 6.  Carga a Cassandra
 
-## 🛡️ Calidad de Datos
+## Calidad de Datos
 
--   `event_id` no nulo\
--   `cost_usd_increment >= -0.01`\
+-   `event_id` no nulo
+-   `cost_usd_increment >= -0.01`
 -   Registros inválidos → `events_quarantine`
 
-## 📊 Consultas en Cassandra
+## Consultas en Cassandra
 
 ``` sql
 SELECT daily_date, service, total_cost_usd
@@ -92,16 +92,16 @@ FROM cloud_analytics.org_daily_usage_by_service
 GROUP BY service;
 ```
 
-## 🔁 Idempotencia
+## Idempotencia
 
--   dropDuplicates\
--   Auditoría de particiones\
+-   dropDuplicates
+-   Auditoría de particiones
 -   Checkpoints
 
-## 🧭 Decisiones Técnicas
+## Decisiones Técnicas
 
--   Arquitectura Lambda + Medallion\
--   Particionamiento optimizado\
--   Modelado Cassandra query-first\
--   Watermark 2h\
+-   Arquitectura Lambda + Medallion
+-   Particionamiento optimizado
+-   Modelado Cassandra query-first
+-   Watermark 2h
 -   Cuarentena activa
