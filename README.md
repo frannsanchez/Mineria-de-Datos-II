@@ -5,9 +5,7 @@
 - Rodrigo Cirera\
 - Juan Baliota
 
-**Fecha:** 26/11/2025
-
-## 📌 Descripción del Proyecto
+## Descripción del Proyecto
 
 Este proyecto implementa un **pipeline de Ingeniería de Datos
 End-to-End** usando la **Arquitectura Medallion (Bronze, Silver, Gold)**
@@ -17,7 +15,7 @@ El objetivo es: - Procesar datos de uso de nube (Batch + Streaming) -
 Aplicar reglas de calidad de datos - Calcular métricas de FinOps -
 Disponibilizar datos para consultas en tiempo real
 
-## 🧱 Arquitectura del Pipeline
+## Arquitectura del Pipeline
 
 ### 🔹 Flujo Multi-hop (Medallion Architecture)
 
